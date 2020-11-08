@@ -21,3 +21,6 @@ main {
 .navbar .nav-link {
   border: none;
 }
+.list-group-item {
+  background: none;
+}
