@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -18,17 +18,20 @@ const Cart = ({ match, location, history }) => {
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const dispatch = useDispatch();
-  console.log(qty);
+
+  // get cart state
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  // run on component mount
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
-  console.log(cartItems);
-  const removeFromCart = (id) => {
-    console.log("removed");
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
   };
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping");
@@ -78,7 +81,7 @@ const Cart = ({ match, location, history }) => {
                       <Button
                         type="button"
                         variant="light"
-                        onClick={() => removeFromCart(item.product)}>
+                        onClick={() => removeFromCartHandler(item.product)}>
                         <i className="fas fa-trash"></i>
                       </Button>
                     </Col>
@@ -107,7 +110,7 @@ const Cart = ({ match, location, history }) => {
                 className="btn btn-block"
                 tpye="button"
                 disabled={cartItems.length === 0}
-                onCLick={checkoutHandler}>
+                onClick={checkoutHandler}>
                 Proceed To Checkout
               </Button>
             </ListGroup.Item>
