@@ -1,7 +1,6 @@
 // skateboard products
-export const products = [
+const products = [
   {
-    _id: "1",
     name: "San Clemente Longboard",
     image: "/images/skater1.jpg",
     description:
@@ -13,7 +12,6 @@ export const products = [
     numReviews: 0,
   },
   {
-    _id: "2",
     name: "Santa Cruz Bouquet Dot 8.0'",
     image: "/images/skater2.jpg",
     description:
@@ -25,7 +23,6 @@ export const products = [
     numReviews: 0,
   },
   {
-    _id: "3",
     name: "DGK West Side 8.25'",
     image: "/images/skater3.jpg",
     description:
@@ -37,7 +34,6 @@ export const products = [
     numReviews: 0,
   },
   {
-    _id: "4",
     name: "DGK Bloom 8.0' Skateboard",
     image: "/images/skater4.jpg",
     description:
@@ -49,3 +45,4 @@ export const products = [
     numReviews: 0,
   },
 ];
+export default products;
