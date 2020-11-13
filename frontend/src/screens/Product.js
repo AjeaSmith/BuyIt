@@ -36,7 +36,7 @@ const Product = ({ match, history }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="danger">{error.response.data.message}</Message>
       ) : (
         <Row>
           <Col md={4}>
