@@ -2,15 +2,18 @@ import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userActions";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const logoutHandler = () => {
-    console.log("hi");
-    // const dispatch = useDispatch()
+    dispatch(logout());
   };
+  console.log(userInfo);
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -27,7 +30,7 @@ const Header = () => {
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown title={userInfo.name.toUpperCase()} id="username">
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
@@ -38,7 +41,7 @@ const Header = () => {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="fas fa-user" /> SIGN IN
+                    <i className="fas fa-user"></i> SIGN IN
                   </Nav.Link>
                 </LinkContainer>
               )}
