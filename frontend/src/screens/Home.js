@@ -1,9 +1,8 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import axios from "axios";
 import { Row, Col } from "react-bootstrap";
 import { listProducts } from "../actions/productActions";
 const Home = () => {
