@@ -13,7 +13,6 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
-  console.log(userInfo);
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg">
