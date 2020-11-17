@@ -12,6 +12,7 @@ import Shipping from "./screens/Shipping";
 import Payment from "./screens/Payment";
 import PlaceOrder from "./screens/PlaceOrder";
 import OrderDetails from "./screens/OrderDetail";
+import UserList from "./screens/UserList";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/payment" component={Payment} />
           <Route path="/placeorder" component={PlaceOrder} />
           <Route path="/order/:id" component={OrderDetails} />
+          <Route path="/admin/userlist" component={UserList} />
         </Container>
       </main>
       <Footer />
