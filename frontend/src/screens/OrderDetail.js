@@ -105,7 +105,7 @@ const OrderDetails = ({ match, history }) => {
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
-                  Delivered on {order.deliveredAt}
+                  Delivered on {moment(order.deliveredAt).format("YYYY-MM-DD")}
                 </Message>
               ) : (
                 <Message variant="danger">Not Delivered</Message>
@@ -199,6 +199,7 @@ const OrderDetails = ({ match, history }) => {
                   )}
                 </ListGroup.Item>
               )}
+              {loadingDelivered && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&
                 order.isPaid &&
