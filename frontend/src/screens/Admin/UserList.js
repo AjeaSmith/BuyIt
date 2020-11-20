@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { listUsers, deleteUser } from "../actions/userActions";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import { listUsers, deleteUser } from "../../actions/userActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 const UserList = ({ history }) => {
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.usersList);
@@ -63,7 +63,7 @@ const UserList = ({ history }) => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/user/${user._id}/edit`}>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listProduct } from "../actions/productActions";
+import { listProductDetails } from "../actions/productActions";
 import Rating from "../components/Rating";
 import {
   Row,
@@ -20,7 +20,7 @@ const Product = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { product, error, loading } = productDetails;
   useEffect(() => {
-    dispatch(listProduct(match.params.id));
+    dispatch(listProductDetails(match.params.id));
   }, [match, dispatch]);
 
   const addToCart = () => {
