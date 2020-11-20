@@ -88,3 +88,49 @@ export const orderListMyReducer = (state = { orders: [] }, action) => {
       return state;
   }
 };
+export const orderAdminListReducer = (state = { orders: [] }, action) => {
+  switch (action.type) {
+    case "ORDER_ADMIN_LIST_REQUEST":
+      return {
+        loading: true,
+      };
+    case "ORDER_ADMIN_LIST_SUCCESS":
+      return {
+        loading: false,
+        orders: action.payload,
+      };
+    case "ORDER_ADMIN_LIST_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case "ORDER_ADMIN_LIST_RESET":
+      return {
+        orders: [],
+      };
+    default:
+      return state;
+  }
+};
+export const orderDeliveredReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ORDER_DELIVERED_REQUEST":
+      return {
+        loading: true,
+      };
+    case "ORDER_DELIVERED_SUCCESS":
+      return {
+        loading: false,
+        success: true,
+      };
+    case "ORDER_DELIVERED_FAIL":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case "ORDER_DELIVERED_RESET":
+      return {};
+    default:
+      return state;
+  }
+};
