@@ -1,5 +1,5 @@
-import express from "express";
-import dotenv from "dotenv";
+const express = require ("express");
+const dotenv = require ("dotenv")
 const path = require("path");
 const connectDB = require("./config/db.js");
 const morgan = require("morgan");
