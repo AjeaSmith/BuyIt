@@ -40,13 +40,23 @@ const Product = ({ match, history }) => {
   } = productCreateReview;
 
   useEffect(() => {
-    dispatch(listProductDetails(match.params.id));
-  }, [match, dispatch]);
+    if (successReview) {
+      setrating(0);
+      setcomment("");
+    }
+    if (!product._id || product._id !== match.params.id) {
+      dispatch(listProductDetails(match.params.id));
+      dispatch({ type: "PRODUCT_CREATE_REVIEW_RESET" });
+    }
+  }, [dispatch, match, successReview]);
 
   const addToCart = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
-  console.log(product.reviews);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(createProductReview(match.params.id, { rating, comment }));
+  };
   return (
     <>
       <Button variant="light" size="sm" className="mb-3">
@@ -160,6 +170,56 @@ const Product = ({ match, history }) => {
                     </ListGroup.Item>
                   );
                 })}
+                <ListGroup.Item>
+                  <h2>Write a customer review</h2>
+                  {successReview && (
+                    <Message variant="success">
+                      Review submitted successfully
+                    </Message>
+                  )}
+                  {loadingReview && <Loader />}
+                  {errorReview && (
+                    <Message variant="danger">{errorReview}</Message>
+                  )}
+                  {userInfo ? (
+                    <Form onSubmit={submitHandler}>
+                      <Form.Group controlId="rating">
+                        <Form.Label>Rating</Form.Label>
+                        <Form.Control
+                          as="select"
+                          value={rating}
+                          onChange={(e) => setrating(e.target.value)}>
+                          <option value="">Select...</option>
+                          <option value="1">1 - Poor</option>
+                          <option value="2">2 - Fair</option>
+                          <option value="3">3 - Good</option>
+                          <option value="4">4 - Very Goood</option>
+                          <option value="5">5 - Excellent</option>
+                        </Form.Control>
+                      </Form.Group>
+                      <Form.Group controlId="comment">
+                        <Form.Label>Comment</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          row="3"
+                          value={comment}
+                          onChange={(e) =>
+                            setcomment(e.target.value)
+                          }></Form.Control>
+                      </Form.Group>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={loadingReview}>
+                        Submit
+                      </Button>
+                    </Form>
+                  ) : (
+                    <Message>
+                      Please <Link to="/login">sign in</Link> to write a review{" "}
+                    </Message>
+                  )}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>

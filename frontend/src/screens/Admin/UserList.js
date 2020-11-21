@@ -21,7 +21,7 @@ const UserList = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, successDelete, history]);
+  }, [dispatch, successDelete, history, userInfo]);
 
   const deleteHandler = (id) => {
     dispatch(deleteUser(id));
