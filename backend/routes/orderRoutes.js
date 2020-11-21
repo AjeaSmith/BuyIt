@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
 const {
   addOrderItems,
@@ -17,4 +17,4 @@ router.get("/:id", protect, getOrderById);
 router.put("/:id/pay", protect, updateOrderToPaid);
 router.put("/:id/deliver", protect, admin, updateOrderToDelivered);
 
-export default router;
+module.exports = router;

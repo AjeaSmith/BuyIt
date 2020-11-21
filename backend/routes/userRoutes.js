@@ -20,4 +20,4 @@ router.put("/:id", protect, admin, adminUpdateUser);
 router.post("/login", authUser);
 router.get("/profile", protect, getUserProfile);
 router.put("/profile", protect, updateUserProfile);
-export default router;
+module.exports = router;

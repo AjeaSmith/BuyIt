@@ -13,4 +13,4 @@ const connectMongoDb = async () => {
     process.exit(1);
   }
 };
-export default connectMongoDb;
+module.exports = connectMongoDb;
