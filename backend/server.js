@@ -1,17 +1,18 @@
-const express = require ("express");
-const dotenv = require ("dotenv")
+const express = require("express");
+const colors = require("colors");
+const dotenv = require("dotenv");
 const path = require("path");
-const connectDB = require("./config/db.js");
+const connectDB = require("./config/db");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const productRoutes = require("./routes/productRoutes.js");
-const userRoutes = require("./routes/userRoutes.js");
-const orderRoutes = require("./routes/orderRoutes.js");
-const uploadRoutes = require("./routes/uploadRoutes.js");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
+const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
-dotenv.config();
 const app = express();
+dotenv.config();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
@@ -27,7 +28,7 @@ app.use("/api/upload", uploadRoutes);
 app.get("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // prepare for deployment

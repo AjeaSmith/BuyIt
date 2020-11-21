@@ -126,7 +126,7 @@ const createReview = asyncHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 });
-export {
+module.exports = {
   getProducts,
   getProductById,
   deleteProduct,

@@ -147,7 +147,7 @@ const adminUpdateUser = asyncHandler(async (req, res) => {
   }
 });
 
-export {
+module.exports = {
   authUser,
   getUserProfile,
   registerUser,

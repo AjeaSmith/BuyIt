@@ -103,7 +103,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
   }
 });
 
-export {
+module.exports = {
   addOrderItems,
   getOrderById,
   updateOrderToPaid,
