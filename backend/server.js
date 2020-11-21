@@ -2,14 +2,14 @@ const express = require("express");
 const colors = require("colors");
 const dotenv = require("dotenv");
 const path = require("path");
-const connectDB = require("./backend/config/db");
+const connectDB = require("./config/db");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const productRoutes = require("./backend/routes/productRoutes");
-const userRoutes = require("./backend/routes/userRoutes");
-const orderRoutes = require("./backend/routes/orderRoutes");
-const uploadRoutes = require("./backend/routes/uploadRoutes");
-const { notFound, errorHandler } = require("./backend/middleware/errorMiddleware");
+const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const app = express();
 dotenv.config();
@@ -33,7 +33,7 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // prepare for deployment
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static(path.join(__dirname, "./frontend/build")));
+  app.use(express.static(path.join(__dirname, "./frontend/build")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
