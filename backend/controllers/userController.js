@@ -1,7 +1,7 @@
-import asyncHandler from "express-async-handler";
-import User from "../models/userModel.js";
-import generateToken from "../utils/generateToken.js";
-import bcrypt from "bcryptjs";
+const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel.js");
+const generateToken = require("../utils/generateToken.js");
+
 // @desc   Auth User and get token
 // @route  POST /api/users/login
 // @access Public

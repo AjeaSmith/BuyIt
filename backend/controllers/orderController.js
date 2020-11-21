@@ -1,5 +1,5 @@
-import asyncHandler from "express-async-handler";
-import Order from "../models/orderModel.js";
+const asyncHandler = require("express-async-handler");
+const Order = require("../models/orderModel.js");
 
 // @desc   Create new Order
 // @route  POST /api/orders
