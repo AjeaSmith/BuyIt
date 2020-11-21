@@ -1,14 +1,14 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const path = require("path");
-const colors = require("colors");
-const connectDB = require("./config/db.js");
-const morgan = require("morgan");
-const productRoutes = require("./routes/productRoutes.js");
-const userRoutes = require("./routes/userRoutes.js");
-const orderRoutes = require("./routes/orderRoutes.js");
-const uploadRoutes = require("./routes/uploadRoutes.js");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
+import express from "express";
+import dotenv from "dotenv";
+import path from "path";
+import colors from "colors";
+import connectDB from "./config/db.js";
+import morgan from "morgan";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 const app = express();
