@@ -109,7 +109,10 @@ export const productUpdateReducer = (state = { product: {} }, action) => {
       return state;
   }
 };
-export const productCreateReviewReducer = (state = {}, action) => {
+export const productCreateReviewReducer = (
+  state = { success: false },
+  action
+) => {
   switch (action.type) {
     case "PRODUCT_CREATE_REVIEW_REQUEST":
       return {

@@ -71,7 +71,15 @@ const OrderDetails = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, order, orderId, successPay, successDelivered]);
+  }, [
+    dispatch,
+    order,
+    orderId,
+    successPay,
+    successDelivered,
+    userInfo,
+    history,
+  ]);
   const onSuccessPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
   };
